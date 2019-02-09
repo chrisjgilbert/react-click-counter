@@ -7,7 +7,9 @@ import App from './App';
 Enzyme.configure({ adapter: new EnzymeAdapter() });
 
 const setup = (props={}, state=null) => {
-  return shallow(<App {...props} />)
+  const wrapper = shallow(<App {...props} />)
+  if (state) wrapper.setState(state);
+  return wrapper;
 }
 
 const findByTestAttr = (wrapper, val) => {
@@ -37,7 +39,13 @@ test('counter starts at 0', () => {
   const initialCounterState = wrapper.state('counter');
   expect(initialCounterState).toBe(0);
 });
-//
-// test('clicking button increments counter display', () => {
-//
-// });
+
+test('clicking button increments counter display', () => {
+  const counter = 7;
+  const wrapper = setup(null, { counter });
+  const button = findByTestAttr(wrapper, 'increment-button');
+  button.simulate('click');
+  wrapper.update();
+  const display = findByTestAttr(wrapper, 'increment-display');
+  expect(display.text()).toContain(counter + 1)
+});
