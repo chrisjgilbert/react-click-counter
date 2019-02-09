@@ -10,21 +10,25 @@ const setup = (props={}, state=null) => {
   return shallow(<App {...props} />)
 }
 
+const findByTestAttr = (wrapper, val) => {
+  return wrapper.find(`[data-test='${val}']`);
+}
+
 test('renders without an error', () => {
   const wrapper = setup();
-  const appComponent = wrapper.find("[data-test='component-app']")
+  const appComponent = findByTestAttr(wrapper, 'component-app');
   expect(appComponent.length).toBe(1);
 });
 
 test('renders increment button', () => {
   const wrapper = setup();
-  const appComponent = wrapper.find("[data-test='increment-button']")
+  const appComponent = findByTestAttr(wrapper, 'increment-button')
   expect(appComponent.length).toBe(1);
 });
 
 test('renders counter display', () => {
  const wrapper = setup();
- const appComponent = wrapper.find("[data-test='increment-display']")
+ const appComponent = findByTestAttr(wrapper, 'increment-display')
  expect(appComponent.length).toBe(1);
 });
 //
