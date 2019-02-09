@@ -4,22 +4,26 @@ import EnzymeAdapter from 'enzyme-adapter-react-16';
 
 import App from './App';
 
-Enzyme.configure({ adapter: new EnzymeAdapter() } );
+Enzyme.configure({ adapter: new EnzymeAdapter() });
+
+const setup = (props={}, state=null) => {
+  return shallow(<App {...props} />)
+}
 
 test('renders without an error', () => {
-  const wrapper = shallow(<App />);
+  const wrapper = setup();
   const appComponent = wrapper.find("[data-test='component-app']")
   expect(appComponent.length).toBe(1);
 });
 
 test('renders increment button', () => {
-  const wrapper = shallow(<App />);
+  const wrapper = setup();
   const appComponent = wrapper.find("[data-test='increment-button']")
   expect(appComponent.length).toBe(1);
 });
 
 test('renders counter display', () => {
- const wrapper = shallow(<App />)
+ const wrapper = setup();
  const appComponent = wrapper.find("[data-test='increment-display']")
  expect(appComponent.length).toBe(1);
 });
