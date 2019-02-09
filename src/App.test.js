@@ -13,17 +13,19 @@ test('renders without an error', () => {
 });
 
 test('renders increment button', () => {
-
+  const wrapper = shallow(<App />);
+  const appComponent = wrapper.find("[data-test='increment-button']")
+  expect(appComponent.length).toBe(1);
 });
 
-test('renders counter display', () => {
-
-});
-
-test('counter starts at 0', () => {
-
-});
-
-test('clicking button increments counter display', () => {
-
-});
+// test('renders counter display', () => {
+//
+// });
+//
+// test('counter starts at 0', () => {
+//
+// });
+//
+// test('clicking button increments counter display', () => {
+//
+// });
