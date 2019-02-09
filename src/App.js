@@ -5,8 +5,9 @@ import './App.css';
 class App extends Component {
   render() {
     return (
-      <div data-test="component-app">
-        <button data-test="increment-button">Increment counter</button>
+      <div data-test='component-app'>
+        <h1 data-test='increment-display'>The counter is currently</h1>
+        <button data-test='increment-button'>Increment counter</button>
       </div>
     );
   }

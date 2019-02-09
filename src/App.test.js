@@ -18,9 +18,11 @@ test('renders increment button', () => {
   expect(appComponent.length).toBe(1);
 });
 
-// test('renders counter display', () => {
-//
-// });
+test('renders counter display', () => {
+ const wrapper = shallow(<App />)
+ const appComponent = wrapper.find("[data-test='increment-display']")
+ expect(appComponent.length).toBe(1);
+});
 //
 // test('counter starts at 0', () => {
 //
