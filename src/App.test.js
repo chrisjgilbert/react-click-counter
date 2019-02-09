@@ -22,19 +22,21 @@ test('renders without an error', () => {
 
 test('renders increment button', () => {
   const wrapper = setup();
-  const appComponent = findByTestAttr(wrapper, 'increment-button')
-  expect(appComponent.length).toBe(1);
+  const button = findByTestAttr(wrapper, 'increment-button');
+  expect(button.length).toBe(1);
 });
 
 test('renders counter display', () => {
  const wrapper = setup();
- const appComponent = findByTestAttr(wrapper, 'increment-display')
- expect(appComponent.length).toBe(1);
+ const display = findByTestAttr(wrapper, 'increment-display');
+ expect(display.length).toBe(1);
 });
-//
-// test('counter starts at 0', () => {
-//
-// });
+
+test('counter starts at 0', () => {
+  const wrapper = setup();
+  const initialCounterState = wrapper.state('counter');
+  expect(initialCounterState).toBe(0);
+});
 //
 // test('clicking button increments counter display', () => {
 //
